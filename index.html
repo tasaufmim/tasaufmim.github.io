@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasauf Mim | AI/ML Engineer</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for the toggle --><script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Define Inter font and smooth scrolling */
+        html {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for a nicer look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9ca3af; /* gray-400 */
+            border-radius: 4px;
+        }
+        .dark ::::-webkit-scrollbar-thumb {
+            background: #4b5563; /* gray-600 */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable dark mode based on the 'dark' class on <html>
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+
+    <!-- Sticky Navigation Ribbon --><header id="navbar" class="sticky top-0 z-50 shadow-md bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm transition-shadow duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <!-- Logo/Name --><a href="#home" class="text-xl font-bold text-indigo-600 dark:text-indigo-400">
+                
+            </a>
+
+            <!-- Navigation Links --><nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#recent-works" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Recent Works</a>
+                <a href="#projects" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Projects</a>
+                <a href="#publications" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Publications</a>
+                <a href="#education" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Education</a>
+                <a href="#technical-skills" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Technical Skills</a>
+                <a href="#experience" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Experience</a>
+                <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Contact me</a>
+            </nav>
+
+            <!-- Dark Mode Toggle Button --><button id="theme-toggle" aria-label="Toggle Dark Mode" class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:ring-2 ring-indigo-500 transition-all duration-300">
+                <span id="sun-icon" data-lucide="sun" class="w-5 h-5 text-gray-600 dark:hidden"></span>
+                <span id="moon-icon" data-lucide="moon" class="w-5 h-5 text-indigo-400 hidden dark:block"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- Home/Personal Information Section --><section id="home" class="py-16 md:py-24">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8 p-6 rounded-xl bg-white dark:bg-gray-800 shadow-xl border border-gray-200 dark:border-gray-700">
+                
+                <!-- Photo Placeholder (Tall Rectangular) --><div class="w-192 h-256 flex-shrink-0 overflow-hidden bg-gray-200 dark:bg-gray-700 border-4 border-indigo-500 dark:border-indigo-400 shadow-lg rounded-lg">
+                    <img src="githubpage.png" alt="Personal Portrait" title="Photo is edited using AI" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Personal Information --><div class="text-center md:text-left">
+                    <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-2">Tasauf Mim</h1>
+                    <h2 class="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4">AI/ML Engineer</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-2">
+                        <span class="font-medium"></span>M.Sc. in Computer Science
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                        <span class="font-medium"></span> Jahangirnagar University, Savar, Dhaka, Bangladesh
+                    </p>
+                    <p class="mt-4 max-w-4xl text-gray-700 dark:text-gray-300">
+                        I am an AI/ML Engineer and Researcher working on Deep Learning, Computer Vision, Natural Language Processing, Generative AI, and Large Language Models. I design neural architectures for feature fusion, uncertainty-aware learning, and low-latency inference on mobile and edge devices. My work focuses on efficient model deployment, explainable decision pipelines, and real-time visual intelligence under limited computational resources.
+                    </p>
+                    <p class="mt-4 max-w-4xl text-gray-700 dark:text-gray-300">
+                        My published research explores multi-scale feature extraction and lightweight CNN backbones for intelligent image classification. I work on medical image analysis (e.g., lung cancer detection) and agricultural image analysis (e.g., local fruit classification, crop disease identification) using supervised, weakly supervised, and data-constrained learning techniques. I also build trustworthy, human-centric agentic systems that use LLM-driven reasoning, multimodal perception, and safe decision control for language-based autonomous AI. My goal is to develop fast, interpretable, and socially responsible AI that supports real clinical and agricultural environments.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <hr class="border-gray-300 dark:border-gray-700 my-10" />
+
+        <!-- Recent Works Section --><section id="recent-works" class="py-10">
+            <h2 class="text-3xl font-bold border-b-2 border-indigo-500 dark:border-indigo-400 pb-2 mb-8">Recent Works</h2>
+            <div class="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg border-l-4 border-yellow-500 dark:border-yellow-400 shadow-md">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Conference Paper Under Review</h3>
+                <p class="text-gray-700 dark:text-gray-300 italic">
+                    "Deep CNN Models for Reliable Lung Cancer Classification: A Comparative Study on IQ-OTH/NCCD Dataset"
+                </p>
+                <p class="text-sm text-yellow-600 dark:text-yellow-300 mt-1">
+                    Status: Submitted to International Conference on Intelligent Data Analysis and Applications (IDAA 2025) for review. Anticipated decision: Dec 2025.
+                </p>
+            </div>
+        </section>
+        
+        <!-- Projects Section (Placeholder) --><section id="projects" class="py-10">
+            <h2 class="text-3xl font-bold border-b-2 border-indigo-500 dark:border-indigo-400 pb-2 mb-8">Projects</h2>
+            <div class="space-y-6">
+                <div class="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg border-l-4 border-indigo-500 dark:border-indigo-400 shadow-md mb-6">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">The Whisperer: A Hyper-Optimized Model for Flawless, Live-Stream Bengali Sign Language Decoding!</h3>
+                    <div class="text-sm text-gray-700 dark:text-gray-400 space-y-1">
+                        <p class="text-gray-700 dark:text-gray-300">
+                        This research unveils The Whisperer, a hyper-optimized, low-latency deep learning architecture for real-time Bengali Sign Language (BdSL) decoding from live video feeds. The system leverages Spatio-Temporal Graph Convolutional Networks (STGCN) combined with LSTM networks to precisely track complex hand geometries and non-manual features. This robust approach ensures flawless, near-instantaneous translation, significantly advancing accessibility and setting a new technical benchmark for continuous sign language interpretation.
+                    </p>
+                    </div>
+                    <span class="inline-block mt-3 px-3 py-1 text-sm font-medium bg-indigo-100 text-indigo-800 rounded-full dark:bg-indigo-900/50 dark:text-indigo-300">Ongoing</span>
+                </div>
+                <div class="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg border-l-4 border-indigo-500 dark:border-indigo-400 shadow-md mb-6">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">CaptionBot: The End-to-End Image Annotation and Dataset Preparation Engine</h3>
+                    <a href="https://github.com/tasaufmim/ImageCaptionGenAI" target="_blank" class="flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors duration-200 px-2 py-1 rounded-md hover:bg-indigo-100 dark:hover:bg-indigo-800">
+                        <span data-lucide="github" class="w-4 h-4 mr-1"></span>
+                        GitHub Repository
+                    </a>
+                    <p class="text-gray-700 dark:text-gray-300 italic mb-2">
+                        A robust, automated solution designed to dramatically accelerate the machine learning data preparation lifecycle by transforming raw images into meticulously captioned, training-ready datasets.
+                    </p>
+                    <div class="text-sm text-gray-700 dark:text-gray-400 space-y-1">
+                        <p><strong>Domain-Specific Captioning:</strong> Achieved high-fidelity annotation by fine-tuning the <strong>Salesforce BLIP model</strong> specifically for domain-relevant image captioning, utilizing a proprietary, custom dataset to ensure unparalleled contextual accuracy.</p>
+                        <p><strong>Integrated ML Pipeline:</strong> The core is an efficient, end-to-end <strong>PyTorch pipeline</strong> meticulously built for seamless data preprocessing, comprehensive model training, and rigorous evaluation, leveraging the power and flexibility of <strong>Hugging Face Transformers</strong>.</p>
+                        <p><strong>High-Efficiency Deployment:</strong> Validation conducted in <strong>Google Colab</strong>, utilizing a powerful stack including <strong>PyTorch, Transformers, Pillow, and tqdm</strong> to ensure efficient resource utilization and reliable training metrics.</p>
+                    </div>
+                    <span class="inline-block mt-3 px-3 py-1 text-sm font-medium bg-indigo-100 text-indigo-800 rounded-full dark:bg-indigo-900/50 dark:text-indigo-300">Ongoing</span>
+                </div>
+                <div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md">
+                    <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-2">Full-Stack AI Chatbot with RAG</h3>
+                    <a href="https://github.com/tasaufmim/conversationalAI-RAG" target="_blank" class="flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors duration-200 px-2 py-1 rounded-md hover:bg-indigo-100 dark:hover:bg-indigo-800">
+                        <span data-lucide="github" class="w-4 h-4 mr-1"></span>
+                        GitHub Repository
+                    </a>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        This project developed a highly scalable, full-stack AI Chatbot engineered for real-time text generation and enhanced contextual accuracy via Retrieval-Augmented Generation (RAG). The modular architecture features a Next.js frontend and an Express.js backend integrated with the Groq API for ultra-low-latency responses. Key implementations include dynamic in-message chat history, robust API error handling, and strategic frontend/backend separation, collectively providing a stable, fast, and knowledge-grounded user experience.
+                    </p>
+                    <span class="inline-block mt-3 px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full dark:bg-green-900/50 dark:text-green-300">Completed (2025)</span>
+                </div>
+                <div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md">
+                    <h3 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-2">Ultra-Low Latency Form Filling AI Voice Agent for Real-Time Conversational Interaction</h3>
+                    <a href="https://github.com/tasaufmim/from-filling-voice-agent" target="_blank" class="flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 transition-colors duration-200 px-2 py-1 rounded-md hover:bg-indigo-100 dark:hover:bg-indigo-800">
+                        <span data-lucide="github" class="w-4 h-4 mr-1"></span>
+                        GitHub Repository
+                    </a>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        This project developed a highly scalable, full-stack AI Chatbot engineered for real-time text generation and enhanced contextual accuracy via Retrieval-Augmented Generation (RAG). The modular architecture features a Next.js frontend and an Express.js backend integrated with the Groq API for ultra-low-latency responses. Key implementations include dynamic in-message chat history, robust API error handling, and strategic frontend/backend separation, collectively providing a stable, fast, and knowledge-grounded user experience.
+                    </p>
+                    <span class="inline-block mt-3 px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full dark:bg-green-900/50 dark:text-green-300">Completed (2025)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section --><section id="publications" class="py-10">
+            <h2 class="text-3xl font-bold border-b-2 border-indigo-500 dark:border-indigo-400 pb-2 mb-8">Publications</h2>
+            <ol class="list-decimal list-inside space-y-6">
+                <!-- Publication 1 --><li class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md">
+                    <p class="font-semibold text-lg text-gray-900 dark:text-white">
+                        <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                            FruitsMultiNet: A Deep Neural Network Approach to Identify Fruits through Multi-scale Feature Fusion using Mobile Interface
+                        </a>
+                    </p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        Mim, T., Rahman, M. M., Biswas, J., Shafkat, A., & Uddin, K. M. M.. Journal of Agriculture and Food Research, 102083, 2025
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500">
+                        DOI: <a href="https://www.sciencedirect.com/science/article/pii/S2666154325004545" class="text-indigo-500 hover:underline">10.1016/j.jafr.2025.102083</a>
+                    </p>
+                </li>
+                <!-- Publication 2 --><li class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md">
+                    <p class="font-semibold text-lg text-gray-900 dark:text-white">
+                        <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+                            Bangla Optical Character Recognition for Mobile Platforms: A Comprehensive Cross-Platform Approach
+                        </a>
+                    </p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                        Sharmin, S., Mim, T., & Rahman, M.. American Journal of Electrical and Computer Engineering. 8. 31-42, 2024.
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-500">
+                        DOI: <a href="https://www.researchgate.net/publication/384034840_Bangla_Optical_Character_Recognition_for_Mobile_Platforms_A_Comprehensive_Cross-Platform_Approach" class="text-indigo-500 hover:underline">10.11648/j.ajece.20240802.12</a>
+                    </p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Education Section --><section id="education" class="py-10">
+            <h2 class="text-3xl font-bold border-b-2 border-indigo-500 dark:border-indigo-400 pb-2 mb-8">Education</h2>
+            <div class="space-y-4">
+                <!-- Education 1 --><div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md">
+                    <p class="font-semibold text-lg text-gray-900 dark:text-white">M.Sc. in Computer Science</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Jahangirnagar University, Savar, Bangladesh | 2022
+                    </p>
+                </div>
+                <!-- Education 2 --><div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md">
+                    <p class="font-semibold text-lg text-gray-900 dark:text-white">B.Sc. in Computer Science and Engineering</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Dhaka International University, Dhaka, Bangladesh | 2018
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section --><section id="education" class="py-10">
+            <h2 class="text-3xl font-bold border-b-2 border-indigo-500 dark:border-indigo-400 pb-2 mb-8">Professional Degree</h2>
+            <div class="space-y-4">
+                <!-- Qualification 3 --><div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-md">
+                    <p class="font-semibold text-lg text-gray-900 dark:text-white">Post Graduate Diploma in Garment Business</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        IBA-University of Dhaka, Dhaka, Bangladesh | 2025
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="technical-skills" class="py-10">
+            <h2 class="text-3xl font-bold border-b-2 border-indigo-500 dark:border-indigo-400 pb-2 mb-8">Technical Skills & Programming Expertise</h2>
+            <!-- Grid container for consistent sizing -->
+            <div class="space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+
+                <!-- Core Programming Languages -->
+                <div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 min-h-[9rem] flex flex-col justify-start">
+                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center">
+                        <span data-lucide="code" class="w-5 h-5 mr-2"></span> Core Programming & Systems
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Python (Advanced), C/C++, Swift, Dart, Shell Scripting
+                    </p>
+                </div>
+                
+                <!-- NEW: LLM/GenAI Frameworks -->
+                <div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 min-h-[9rem] flex flex-col justify-start">
+                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center">
+                        <span data-lucide="bot-message-square" class="w-5 h-5 mr-2"></span> LLM/GenAI Frameworks
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        LangChain, LangGraph (Agentic Flows), RAG Systems, Prompt Engineering
+                    </p>
+                </div>
+
+                <!-- Artificial Intelligence & Deep Learning (Updated Title) -->
+                <div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 min-h-[9rem] flex flex-col justify-start">
+                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center">
+                        <span data-lucide="brain" class="w-5 h-5 mr-2"></span> Machine Learning & Deep Learning
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        PyTorch, TensorFlow, Keras, Scikit-learn, Computer Vision
+                    </p>
+                </div>
+
+                <!-- Scientific Computing & Data Analytics -->
+                <div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 min-h-[9rem] flex flex-col justify-start">
+                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center">
+                        <span data-lucide="bar-chart-2" class="w-5 h-5 mr-2"></span> Scientific Computing & Visualization
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        NumPy, Pandas (Data Manipulation), OpenCV, Matplotlib, Seaborn
+                    </p>
+                </div>
+                
+                <!-- Design & Creative Tools -->
+                <div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 min-h-[9rem] flex flex-col justify-start">
+                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center">
+                        <span data-lucide="palette" class="w-5 h-5 mr-2"></span> Design & Creative Tools
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Adobe Illustrator (Vector Graphics), Adobe Photoshop (Image Editing)
+                    </p>
+                </div>
+
+                <!-- MLOps & Cloud Infrastructure -->
+                <div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 min-h-[9rem] flex flex-col justify-start">
+                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center">
+                        <span data-lucide="server" class="w-5 h-5 mr-2"></span> MLOps & Cloud Infrastructure
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Docker, Kubernetes (Basic), AWS Sagemaker, GCP Vertex AI, Linux
+                    </p>
+                </div>
+                
+                <!-- Mobile & Cross-Platform Development -->
+                <div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 min-h-[9rem] flex flex-col justify-start">
+                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center">
+                        <span data-lucide="smartphone" class="w-5 h-5 mr-2"></span> Mobile & Cross-Platform Development
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Flutter, Android Studio, Xcode (iOS/macOS Development)
+                    </p>
+                </div>
+                
+                <!-- Data Persistence & Database Systems -->
+                <div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 min-h-[9rem] flex flex-col justify-start">
+                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center">
+                        <span data-lucide="database" class="w-5 h-5 mr-2"></span> Data Persistence & Database Systems
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        SQL (MySQL, SQLite), NoSQL (Firebase/Firestore)
+                    </p>
+                </div>
+                
+                <!-- Development Workflow & Tools -->
+                <div class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 min-h-[9rem] flex flex-col justify-start">
+                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2 flex items-center">
+                        <span data-lucide="git-branch" class="w-5 h-5 mr-2"></span> Development Workflow & Tools
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300">
+                        Git, GitHub, VS Code, Jupyter Notebook, Google Colab
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience Section --><section id="experience" class="py-10">
+            <h2 class="text-3xl font-bold border-b-2 border-indigo-500 dark:border-indigo-400 pb-2 mb-8">Experience</h2>
+            <div class="space-y-6">
+                <!-- Experience Item 1 --><div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md border-l-4 border-indigo-300 dark:border-indigo-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">AI/ML Engineer (Remote)</h3>
+                    <p class="text-indigo-600 dark:text-indigo-400">
+                        InfoTechBrains CloudTech Private Limited | Sep 2025 - Present
+                    </p>
+                    <ul class="list-disc ml-5 text-gray-700 dark:text-gray-300 mt-3 space-y-1">
+                        <li>Built responsive, high-performance web apps using AI/ML, Next.js, and React.</li>
+                        <li>Collaborate with design and back-end teams to create seamless user experience.</li>
+                        <li>Optimize, debugge, and documente code while adopting modern front-end practices.</li>
+                    </ul>
+                </div>
+                <!-- Experience Item 2 --><div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md border-l-4 border-indigo-300 dark:border-indigo-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Sr. Graphcs Desinger</h3>
+                    <p class="text-indigo-600 dark:text-indigo-400">
+                        GMS Composite Knitting Ind. Ltd. | Feb 2022 - Nov 2025
+                    </p>
+                    <ul class="list-disc ml-5 text-gray-700 dark:text-gray-300 mt-3 space-y-1">
+                        <li>Coordinate with buyers and merchandisers to execute digital textile print.</li>
+                        <li>Lead graphic design creation, production planning, and execution.</li>
+                    </ul>
+                </div>
+                <!-- Experience Item 3 --><div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md border-l-4 border-indigo-300 dark:border-indigo-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">IT Support (Part Time)</h3>
+                    <p class="text-indigo-600 dark:text-indigo-400">
+                        Idea BD Trims Packaging | Aug 2015 - March 2018
+                    </p>
+                    <ul class="list-disc ml-5 text-gray-700 dark:text-gray-300 mt-3 space-y-1">
+                        <li>Installed and maintained hardware/software systems.</li>
+                        <li>Resolved technical issues related to networks and peripherals.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Me Section --><section id="contact" class="py-10 mb-20">
+            <h2 class="text-3xl font-bold border-b-2 border-indigo-500 dark:border-indigo-400 pb-2 mb-8">Contact Me</h2>
+            <div class="p-8 rounded-xl bg-white dark:bg-gray-800 shadow-xl border border-gray-200 dark:border-gray-700 max-w-lg mx-auto">
+                <p class="text-center text-lg mb-6 text-gray-700 dark:text-gray-300">
+                    
+                </p>
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                    
+                    
+
+                    <a href="https://scholar.google.com/citations?user=zrymUesAAAAJ&hl=en" target="_blank" aria-label="Google Scholar Profile"
+                       class="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-600 hover:text-indigo-700 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                        <span data-lucide="graduation-cap" class="w-5 h-5"></span>
+                        <span class="font-medium hidden sm:inline">Scholar</span>
+                    </a>
+                    
+                    
+
+                    <a href="https://www.researchgate.net/profile/Tasauf-Mim" target="_blank" aria-label="ResearchGate Profile"
+                       class="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-600 hover:text-indigo-700 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                        <span data-lucide="flask-conical" class="w-5 h-5"></span>
+                        <span class="font-medium hidden sm:inline">ResearchGate</span>
+                    </a>
+
+                    
+
+                    <a href="https://linkedin.com/in/tasaufmim" target="_blank" aria-label="LinkedIn Profile"
+                       class="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-600 hover:text-indigo-700 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                        <span data-lucide="linkedin" class="w-5 h-5"></span>
+                        <span class="font-medium hidden sm:inline">LinkedIn</span>
+                    </a>
+
+                    
+
+                    <a href="https://github.com/tasaufmim" target="_blank" aria-label="GitHub Profile"
+                       class="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-600 hover:text-indigo-700 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                        <span data-lucide="github" class="w-5 h-5"></span>
+                        <span class="font-medium hidden sm:inline">GitHub</span>
+                    </a>
+                </div>
+                <div class="space-y-4 text-center">
+                    <p class="flex items-center justify-center text-xl text-gray-900 dark:text-white">
+                        <span data-lucide="mail" class="w-6 h-6 mr-3 text-indigo-500"></span>
+                        <a href="mailto:tasaufmim@gmail.com" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 font-medium">tasaufmim@gmail.com</a>
+                    </p>
+                    <p class="flex items-center justify-center text-xl text-gray-900 dark:text-white">
+                        <span data-lucide="map-pin" class="w-6 h-6 mr-3 text-indigo-500"></span>
+                        Savar, Dhaka, Bangladesh
+                    </p>
+                    <p class="flex items-center justify-center text-xl text-gray-900 dark:text-white">
+                        <span data-lucide="phone" class="w-6 h-6 mr-3 text-indigo-500"></span>
+                        Phone: +880 1752 690 ***
+                    </p>
+                    <p class="pt-4 text-sm text-gray-500 dark:text-gray-400">
+                        (Please allow up to 24 hours for a response.)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer --><footer class="bg-gray-200 dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700 py-6">
+        <div class="container mx-auto px-4 text-center text-sm text-gray-600 dark:text-gray-400">
+            &copy; 2025 Tasauf Mim. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript for Theme Toggle --><script>
+        // Initialize Lucide Icons (to render the SVG icons)
+        lucide.createIcons();
+
+        const htmlEl = document.documentElement;
+        const toggleButton = document.getElementById('theme-toggle');
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                htmlEl.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlEl.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Function to determine the initial theme
+        function getInitialTheme() {
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                return storedTheme;
+            }
+            // Check OS preference
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        // Apply initial theme on load
+        setTheme(getInitialTheme());
+
+        // Event listener for the toggle button
+        toggleButton.addEventListener('click', () => {
+            const currentTheme = htmlEl.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+
+        // Optional: Listen for OS theme changes in real-time
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only update if the user hasn't explicitly set a preference via the toggle
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+
+    </script>
+</body>
+</html
