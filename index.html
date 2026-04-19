@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasauf Mim | AI/ML Engineer</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for the toggle -->
+    <script src="https://unpkg.com/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        html {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #9ca3af;
+            border-radius: 4px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .delay-300 {
+            animation-delay: 300ms;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass-card {
+            background: rgba(31, 41, 55, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(55, 65, 81, 0.5);
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+            /* Indigo glow */
+        }
+
+        /* --- PRE-FLIGHT FOR SMOOTH ACCORDION --- */
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* The Grid Trick: Animating height: auto */
+        details .details-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            /* Slower, smoother transition */
+        }
+
+        details[open] .details-content {
+            grid-template-rows: 1fr;
+        }
+
+        .details-wrapper {
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        /* Content reveal animation */
+        details[open] .details-wrapper>div {
+            animation: contentReveal 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes contentReveal {
+            from {
+                opacity: 0;
+                transform: translateY(-12px);
+                filter: blur(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        gray: {
+                            900: '#111827',
+                            950: '#030712', /* Deeper dark for premium background */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body
+    class="bg-slate-50 text-slate-800 dark:bg-gray-950 dark:text-gray-200 transition-colors duration-300 selection:bg-indigo-500/30">
+
+    <!-- Sticky Navigation Ribbon -->
+    <header id="navbar"
+        class="sticky top-0 z-50 shadow-sm bg-white/80 dark:bg-gray-950/80 backdrop-blur-md transition-shadow duration-300 border-b border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <!-- Logo/Name --><a href="#home" class="text-xl font-bold text-indigo-600 dark:text-indigo-400">
+                Mim, T.
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#ongoing"
+                    class="hover:text-indigo-600 dark:hover:text-teal-400 transition-colors duration-200">Ongoing</a>
+                <a href="#projects"
+                    class="hover:text-indigo-600 dark:hover:text-teal-400 transition-colors duration-200">Projects</a>
+                <a href="#publications"
+                    class="hover:text-indigo-600 dark:hover:text-teal-400 transition-colors duration-200">Research</a>
+                <a href="#technical-skills"
+                    class="hover:text-indigo-600 dark:hover:text-teal-400 transition-colors duration-200">Skills</a>
+                <a href="#experience"
+                    class="hover:text-indigo-600 dark:hover:text-teal-400 transition-colors duration-200">Experience</a>
+                <a href="#contact"
+                    class="hover:text-indigo-600 dark:hover:text-teal-400 transition-colors duration-200">Contact</a>
+            </nav>
+
+            <!-- Dark Mode Toggle Button --><button id="theme-toggle" aria-label="Toggle Dark Mode"
+                class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:ring-2 ring-indigo-500 transition-all duration-300">
+                <span id="sun-icon" data-lucide="sun" class="w-5 h-5 text-gray-600 dark:hidden"></span>
+                <span id="moon-icon" data-lucide="moon" class="w-5 h-5 text-indigo-400 hidden dark:block"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- Hero Section (Dual Narrative) -->
+        <section id="home" class="py-16 md:py-24 animate-fade-in-up">
+            <div
+                class="flex flex-col md:flex-row items-center md:items-start gap-10 p-8 rounded-2xl glass-card relative overflow-hidden">
+
+                <!-- Background decorative element -->
+                <div
+                    class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-3xl pointer-events-none">
+                </div>
+
+                <!-- Photo -->
+                <div
+                    class="w-48 h-64 md:w-56 md:h-72 flex-shrink-0 overflow-hidden bg-gray-200 dark:bg-gray-800 border-2 border-indigo-100 dark:border-gray-700 shadow-xl rounded-xl z-10">
+                    <img src="githubpage.png" alt="Tasauf Mim" title="Tasauf Mim" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Personal Information -->
+                <div class="text-center md:text-left z-10 flex-1">
+
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-2 tracking-tight">
+                        Tasauf Mim</h1>
+                    <h2
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-teal-500 dark:from-indigo-400 dark:to-teal-300 mb-1">
+                        AI/ML Engineer</h2>
+                    <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-400 mb-4">Researcher Computer Vision
+                    </h2>
+
+                    <p
+                        class="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300 mb-6 max-w-3xl leading-relaxed">
+                        Architecting enterprise-grade AI systems and deploying state-of-the-art Deep Learning models to
+                        edge devices. I specialize in bridging the gap between cutting-edge algorithmic research and
+                        highly scalable, real-time production engineering pipelines.
+                    </p>
+
+                    <!-- Tech Tags -->
+                    <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
+                        <span
+                            class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded-md border border-gray-200 dark:border-gray-700">Generative
+                            AI & LLMs</span>
+                        <span
+                            class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded-md border border-gray-200 dark:border-gray-700">RAG
+                            Architectures</span>
+                        <span
+                            class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded-md border border-gray-200 dark:border-gray-700">Computer
+                            Vision</span>
+                        <span
+                            class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded-md border border-gray-200 dark:border-gray-700">Edge
+                            Deployments</span>
+                        <span
+                            class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-800 dark:text-gray-300 rounded-md border border-gray-200 dark:border-gray-700">MLOps
+                            & System Design</span>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <div
+            class="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent my-12 animate-fade-in-up delay-100">
+        </div>
+
+        <!-- Ongoing Research & Active Development Section -->
+        <section id="ongoing" class="py-16 animate-fade-in-up delay-100">
+            <div class="mb-10">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white flex items-center mb-2">
+                    <span data-lucide="flask-conical" class="w-8 h-8 mr-3 text-amber-500"></span>
+                    Ongoing Research & Active Development
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl">
+                    Active projects currently in the research lab or staging environments.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8">
+                <!-- Ongoing 1: The Whisperer -->
+                <div class="p-8 rounded-2xl glass-card flex flex-col hover-glow transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="p-3 bg-amber-100 dark:bg-amber-900/30 rounded-xl text-amber-600 dark:text-amber-400">
+                                <span data-lucide="activity" class="w-8 h-8"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">The Whisperer: Sign
+                                    Language Synthesis</h3>
+                                <p class="text-amber-600 dark:text-amber-400 text-sm font-medium">Advanced Research •
+                                    Computer Vision & NLP</p>
+                            </div>
+                        </div>
+                        <span
+                            class="text-xs font-bold px-3 py-1 bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-400 rounded-full border border-amber-200 dark:border-amber-800">Research
+                            WIP</span>
+                    </div>
+
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                        A hyper-optimized research project focusing on decoding Bengali Sign Language in live video
+                        streams.
+                        Utilizes custom spatiotemporal architectures to map human gesture dynamics to linguistic tokens.
+                    </p>
+
+                    <div class="space-y-3">
+                        <details class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>TECH STACK & CORE SYSTEMS</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-amber-600 dar-text-amber-400 mb-1">Stack:</p>
+                                            <p>Python, PyTorch, MediaPipe (Holistic), STGCN, LSTMs, NumPy.</p>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-amber-600 dar-text-amber-400 mb-1">Core Systems:
+                                            </p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Spatio-Temporal Graph Construction:</strong> Dynamic mapping
+                                                    of
+                                                    21-point hand joints.</li>
+                                                <li><strong>Hand Geometry Invariance:</strong> Normalization for varied
+                                                    camera
+                                                    angles and distances.</li>
+                                                <li><strong>Temporal Decoding:</strong> Context-aware sequence
+                                                    prediction for
+                                                    sign flow.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>AI INTEGRATION & IMPACT</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-amber-600 dar-text-amber-400 mb-1">AI Models:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>STGCN:</strong> For capturing complex spatial relationships
+                                                    in hand
+                                                    movement.</li>
+                                                <li><strong>Multi-modal Fusion:</strong> Integration of pose and hand
+                                                    landmark
+                                                    data.</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-amber-600 dar-text-amber-400 mb-1">Impact:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>High-fidelity recognition for the hearing-impaired.</li>
+                                                <li>Research contribution to Bengali Sign Language digitization.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Ongoing 2: Smart Parking -->
+                <div class="p-8 rounded-2xl glass-card flex flex-col hover-glow transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl text-indigo-600 dark:text-indigo-400">
+                                <span data-lucide="car" class="w-8 h-8"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Smart Parking Management
+                                    System (Computer Vision)</h3>
+                                <p class="text-indigo-600 dark:text-indigo-400 text-sm font-medium">Production-Ready •
+                                    Computer Vision & ANPR</p>
+                            </div>
+                        </div>
+                        <span
+                            class="text-xs font-bold px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-400 rounded-full border border-indigo-200 dark:border-indigo-800">In
+                            Development</span>
+                    </div>
+
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                        A real-time computer vision system for automated parking monitoring. Features high-precision
+                        vehicle tracking and automated license plate recognition via LLM-enhanced OCR.
+                    </p>
+
+                    <div class="space-y-3">
+                        <details class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>TECH STACK & CORE SYSTEMS</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Stack:</p>
+                                            <p>YOLOv8m/n, GPT-4o Vision, FastAPI, React 19, Ant Design, OpenCV, SQLite.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Core Systems:
+                                            </p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Vehicle Processing Pipeline:</strong> 15-30 FPS tracking on
+                                                    modern
+                                                    GPUs.</li>
+                                                <li><strong>ROI State Machine:</strong> Polygon-based occupancy with
+                                                    stabilization logic.</li>
+                                                <li><strong>OCR Async Queue:</strong> Multi-threaded background
+                                                    processing/retry
+                                                    logic.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>AI INTEGRATION & IMPACT</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">AI Models:
+                                            </p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Dual YOLOv8:</strong> Specialized models for vehicle and
+                                                    plate
+                                                    localization.</li>
+                                                <li><strong>OCR Fusion:</strong> GPT-4o Vision with PaddleOCR offline
+                                                    fallback.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Impact:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>98%+ Vehicle Detection accuracy (0.9 confidence).</li>
+                                                <li>Sub-500ms end-to-end processing latency.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div
+            class="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent my-10 animate-fade-in-up delay-150">
+        </div>
+
+        <!-- Projects & Scalable Systems Section -->
+        <section id="projects" class="py-16 animate-fade-in-up delay-200">
+            <div class="mb-10">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white flex items-center mb-2">
+                    <span data-lucide="cpu" class="w-8 h-8 mr-3 text-emerald-500"></span>
+                    Projects
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl">
+                    End-to-end applications demonstrating deployment, low-latency optimization, and full-stack
+                    integration.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8">
+
+                <!-- Project 1: AI Interview & ATS System -->
+                <div class="p-8 rounded-2xl glass-card flex flex-col hover-glow transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded-xl text-emerald-600 dark:text-emerald-400">
+                                <span data-lucide="users" class="w-8 h-8"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">AI Interview & ATS System
+                                </h3>
+                                <p class="text-emerald-600 dark:text-emerald-400 text-sm font-medium">Full Enterprise
+                                    System • Recruitment Lifecycle</p>
+                            </div>
+                        </div>
+                        <a href="https://github.com/tasaufmim/ai-interview" target="_blank"
+                            class="text-gray-400 hover:text-indigo-500 transition-colors">
+                            <span data-lucide="github" class="w-6 h-6"></span>
+                        </a>
+                    </div>
+
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                        A comprehensive AI-powered interview platform with integrated Applicant Tracking System (ATS).
+                        Automates the end-to-end recruitment lifecycle from multi-format CV parsing to real-time,
+                        adaptive behavioral interviews.
+                    </p>
+
+                    <div class="space-y-3">
+                        <details
+                            class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>TECH STACK & CORE SYSTEMS</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Stack:</p>
+                                            <p>Next.js, Node.js (Express), MongoDB, WebSockets, OpenAI API.</p>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Core Systems
+                                                Built:
+                                            </p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Interview Engine:</strong> Real-time WebSocket-based
+                                                    adaptive
+                                                    questioning.</li>
+                                                <li><strong>CV Parser:</strong> PDF/DOCX/TXT → structured profile using
+                                                    LLM
+                                                    extraction.</li>
+                                                <li><strong>ATS Scoring:</strong> 0–100 scoring based on skill matching
+                                                    +
+                                                    experience weighting.</li>
+                                                <li><strong>Evaluation System:</strong> STAR-method scoring (LLM-based
+                                                    rubric).
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details
+                            class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>SECURITY, AI & IMPACT</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Security &
+                                                AI:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Access:</strong> JWT with bcrypt; RBAC (Admin, Employer,
+                                                    Candidate).
+                                                </li>
+                                                <li><strong>AI Integration:</strong> GPT-4o-mini for evaluation; GPT-4
+                                                    fallback.
+                                                </li>
+                                                <li><strong>Proctoring:</strong> Face detection for identity
+                                                    verification.</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Impact:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Reduced manual screening effort by ~70%.</li>
+                                                <li>Standardized candidate evaluation across multiple dimensions.</li>
+                                                <li>Scalable architecture for enterprise deployment.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Project 2: Ultra-Low Latency Voice AI Agent -->
+                <div class="p-8 rounded-2xl glass-card flex flex-col hover-glow transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl text-blue-600 dark:text-blue-400">
+                                <span data-lucide="mic" class="w-8 h-8"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Ultra-Low Latency Voice AI
+                                    Agent
+                                </h3>
+                                <p class="text-blue-600 dark:text-blue-400 text-sm font-medium">Real-Time Communication
+                                    Agent • Multimodal Gemini</p>
+                            </div>
+                        </div>
+                        <a href="https://github.com/tasaufmim/from-filling-voice-agent" target="_blank"
+                            class="text-gray-400 hover:text-indigo-500 transition-colors">
+                            <span data-lucide="github" class="w-6 h-6"></span>
+                        </a>
+                    </div>
+
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                        A cutting-edge real-time voice AI assistant that enables natural voice conversations with
+                        autonomous
+                        form-filling capabilities. Leveraging WebRTC for seamless audio flow.
+                    </p>
+
+                    <div class="space-y-3">
+                        <details
+                            class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>TECH STACK & CORE SYSTEMS</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Stack:</p>
+                                            <p>FastAPI, Next.js 15, WebRTC (Daily.co), Pipecat AI, Gemini 2.0 Flash Exp.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Core Systems
+                                                Built:
+                                            </p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Real-time Pipeline:</strong> Async frame-based processing
+                                                    for
+                                                    minimal lag.</li>
+                                                <li><strong>Form Interaction:</strong> AI-triggered conversational data
+                                                    collection.</li>
+                                                <li><strong>Transport Layer:</strong> Daily.co WebRTC for low-latency
+                                                    audio
+                                                    streaming.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details
+                            class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>SECURITY, AI & IMPACT</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">AI &
+                                                Security:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Gemini 2.0 Flash:</strong> Multimodal Live model for direct
+                                                    audio
+                                                    handling.</li>
+                                                <li><strong>Security:</strong> Secure environment management for API
+                                                    keys.</li>
+                                                <li><strong>Fallbacks:</strong> Resilient design with basic text
+                                                    processing
+                                                    fallback.</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Impact:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Sub-500ms industry-leading response times.</li>
+                                                <li>Enabled hands-free, natural language data entry workflows.</li>
+                                                <li>Supports multi-language conversational contexts.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Project 3: AI Attendance System -->
+                <div class="p-8 rounded-2xl glass-card flex flex-col hover-glow transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-xl text-purple-600 dark:text-purple-400">
+                                <span data-lucide="scan-face" class="w-8 h-8"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">AI Attendance System (Face
+                                    Recognition)</h3>
+                                <p class="text-purple-600 dark:text-purple-400 text-sm font-medium">Distributed
+                                    Inference • Edge Computing</p>
+                            </div>
+                        </div>
+                        <a href="https://ai-attendance-public.vercel.app/" target="_blank"
+                            class="text-gray-400 hover:text-indigo-500 transition-colors">
+                            <span data-lucide="external-link" class="w-6 h-6"></span>
+                        </a>
+                    </div>
+
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                        A distributed facial recognition system that shifts AI inference to the edge.
+                        Leverages browser-side processing to minimize server load while ensuring high-fidelity identity
+                        verification.
+                    </p>
+
+                    <div class="space-y-3">
+                        <details
+                            class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>TECH STACK & CORE SYSTEMS</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Stack:</p>
+                                            <p>FastAPI, Next.js 16, React 19, TensorFlow.js, face-api.js, MongoDB Atlas
+                                                (Motor).
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Core Systems
+                                                Built:
+                                            </p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Face Recognition Pipeline:</strong> Browser-side feature
+                                                    extraction
+                                                    (128-d embeddings).</li>
+                                                <li><strong>Quality Frame Sampler:</strong> Extraction of high-fidelity
+                                                    frames
+                                                    from video.</li>
+                                                <li><strong>Async Persistence:</strong> Non-blocking data flow between
+                                                    edge and
+                                                    MongoDB Atlas.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details
+                            class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>SECURITY, AI & IMPACT</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">AI &
+                                                Security:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Access:</strong> NextAuth.js OAuth 2.0; JWT tokens with
+                                                    rotation.
+                                                </li>
+                                                <li><strong>Data Protection:</strong> TLS 1.3 encrypted communication.
+                                                </li>
+                                                <li><strong>Inference:</strong> Browser-side face detection via
+                                                    TensorFlow.js.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Impact:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>90% reduction in server-side bandwidth.</li>
+                                                <li>Touchless identification for 1000+ simultaneous sessions.</li>
+                                                <li>Automated tracking with quality frame extraction.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Project 4: Enterprise RAG Architect -->
+                <div class="p-8 rounded-2xl glass-card flex flex-col hover-glow transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-xl text-orange-600 dark:text-orange-400">
+                                <span data-lucide="message-square-text" class="w-8 h-8"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Enterprise RAG Architect
+                                </h3>
+                                <p class="text-orange-600 dark:text-orange-400 text-sm font-medium">Retrieval-Augmented
+                                    Generation • Semantic Search</p>
+                            </div>
+                        </div>
+                        <a href="https://github.com/tasaufmim/conversationalAI-RAG" target="_blank"
+                            class="text-gray-400 hover:text-indigo-500 transition-colors">
+                            <span data-lucide="github" class="w-6 h-6"></span>
+                        </a>
+                    </div>
+
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                        A sophisticated Retrieval-Augmented Generation (RAG) system providing intelligent, context-aware
+                        responses
+                        from unstructured data with zero LLM hallucinations.
+                    </p>
+
+                    <div class="space-y-3">
+                        <details
+                            class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>TECH STACK & CORE SYSTEMS</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Stack:</p>
+                                            <p>Next.js 16, LangChain 1.0.1, Groq SDK, SentenceTransformers (MiniLM).</p>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Core Systems
+                                                Built:
+                                            </p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Knowledge Pipeline:</strong> Semantic chunking and vector
+                                                    embedding.
+                                                </li>
+                                                <li><strong>Retrieval Engine:</strong> Cosine similarity search;
+                                                    Llama-3.3-70b
+                                                    reranking.</li>
+                                                <li><strong>Persistence:</strong> Multi-turn session history with
+                                                    isolated
+                                                    context.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details
+                            class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>SECURITY, AI & IMPACT</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">AI &
+                                                Security:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Inference:</strong> Groq-accelerated LLM cycles for
+                                                    sub-second
+                                                    responses.</li>
+                                                <li><strong>Integrity:</strong> Confidence-threshold filtering for
+                                                    quality
+                                                    control.</li>
+                                                <li><strong>Access:</strong> Environment-based API management.</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Impact:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Streamlined access to internal unstructured knowledge.</li>
+                                                <li>24/7 Context-aware intelligent support layer.</li>
+                                                <li>Eliminated hallucinations via strict RAG grounding.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Project 5: ImgCaptionGen - Vision LLM -->
+                <div class="p-8 rounded-2xl glass-card flex flex-col hover-glow transition-all duration-300">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="p-3 bg-pink-100 dark:bg-pink-900/30 rounded-xl text-pink-600 dark:text-pink-400">
+                                <span data-lucide="image" class="w-8 h-8"></span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">ImgCaptionGen - Vision LLM
+                                </h3>
+                                <p class="text-pink-600 dark:text-pink-400 text-sm font-medium">Fine-tuned Multimodal
+                                    Pipeline • BLIP Transformer</p>
+                            </div>
+                        </div>
+                        <a href="https://github.com/tasaufmim/ImageCaptionGenAI" target="_blank"
+                            class="text-gray-400 hover:text-indigo-500 transition-colors">
+                            <span data-lucide="github" class="w-6 h-6"></span>
+                        </a>
+                    </div>
+
+                    <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                        An advanced vision-language system that generates descriptive captions for images.
+                        Focuses on architectural depth from raw image loading to fine-tuned transformer inference.
+                    </p>
+
+                    <div class="space-y-3">
+                        <details
+                            class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>TECH STACK & CORE SYSTEMS</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Stack:</p>
+                                            <p>PyTorch, Salesforce BLIP (Transformers), Pandas, NumPy, PIL.</p>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Core Systems
+                                                Built:
+                                            </p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Data Pipeline:</strong> Custom PyTorch CaptionDataset class.
+                                                </li>
+                                                <li><strong>Training Framework:</strong> Optimized AdamW training loops
+                                                    on CUDA.
+                                                </li>
+                                                <li><strong>Inference Engine:</strong> Beam-search optimized modal
+                                                    inference.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details
+                            class="group border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer text-sm font-bold text-gray-900 dark:text-white bg-gray-50/50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                                <span>AI INTEGRATION & IMPACT</span>
+                                <span data-lucide="chevron-down"
+                                    class="w-4 h-4 transition-transform group-open:rotate-180"></span>
+                            </summary>
+                            <div class="details-content">
+                                <div class="details-wrapper">
+                                    <div class="p-4 text-sm text-gray-600 dark:text-gray-400 grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">AI
+                                                Integrated:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li><strong>Vision LLM:</strong> Salesforce BLIP for multimodal
+                                                    understanding.
+                                                </li>
+                                                <li><strong>Feature Fusion:</strong> Vision Transformer (ViT)
+                                                    integration.</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-indigo-600 dark:text-indigo-400 mb-1">Impact:</p>
+                                            <ul class="list-disc ml-4 space-y-1">
+                                                <li>Automated high-fidelity metadata for image archives.</li>
+                                                <li>Enhanced accessibility layer for visually impaired navigation.</li>
+                                                <li>Improved SEO through semantic alt-text generation.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div
+            class="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent my-10 animate-fade-in-up delay-250">
+        </div>
+
+        <!-- Research & Publications Section -->
+        <section id="publications" class="py-16 animate-fade-in-up delay-300">
+            <div class="mb-10">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white flex items-center mb-2">
+                    <span data-lucide="book-open" class="w-8 h-8 mr-3 text-indigo-500"></span>
+                    Research & Publications
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl">
+                    Peer-reviewed contributions focusing on deep learning architectures, feature fusion, and trustworthy
+                    AI.
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Publication 1 (Under Review) -->
+                <div class="p-6 rounded-xl glass-card border-l-4 border-l-yellow-500 hover-glow transition-all">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span
+                                    class="px-2.5 py-0.5 rounded text-xs font-semibold bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-800">Under
+                                    Review</span>
+                                <span class="text-sm font-mono text-gray-500 dark:text-gray-400">IDAA 2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 leading-tight">
+                                Deep CNN Models for Reliable Lung Cancer Classification: A Comparative Study on
+                                IQ-OTH/NCCD Dataset
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
+                                Developed a robust clinical decision support system utilizing state-of-the-art CNNs
+                                (ResNet50, VGG16, VGG19) to classify lung scan data into benign, malignant, and normal
+                                categories. Solved critical class imbalance challenges using specialized data
+                                augmentation, achieving peak ResNet50 metrics: 99.33% accuracy, 99.00% recall, and
+                                98.66% precision to ensure high-reliability medical diagnoses.
+                            </p>
+                            <div class="flex gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">ResNet50</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">Class
+                                    Imbalance</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">Medical
+                                    Imaging</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 2 -->
+                <div class="p-6 rounded-xl glass-card border-l-4 border-l-indigo-500 hover-glow transition-all">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span
+                                    class="px-2.5 py-0.5 rounded text-xs font-semibold bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">Published</span>
+                                <span
+                                    class="px-2.5 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">Q1
+                                    Journal</span>
+                                <span class="text-sm font-mono text-gray-500 dark:text-gray-400">2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                FruitsMultiNet: A Deep Neural Network Approach to Identify Fruits through Multi-scale
+                                Feature Fusion
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 font-medium">
+                                Mim, T., Rahman, M. M., et al. — Journal of Agriculture and Food Research (Elsevier)
+                            </p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
+                                Proposed <strong>FruitsMultiNet</strong>, a high-precision multi-scale fusion
+                                architecture merging MobileNet and VGG16 to automate fruit classification for smart
+                                supply chains. Validated on regional fruit datasets achieving 99.84% accuracy,
+                                outperforming all individual baselines. The system was deployed via a production-ready
+                                mobile interface providing real-time nutritional insights and healthcare metadata.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded">Feature
+                                    Fusion</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded">Transfer
+                                    Learning</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded">MobileNet
+                                    & VGG16</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded">Smart
+                                    Supply Chain</span>
+                            </div>
+                            <a href="https://www.sciencedirect.com/science/article/pii/S2666154325004545"
+                                target="_blank"
+                                class="inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline">
+                                DOI: 10.1016/j.jafr.2025.102083 <span data-lucide="external-link"
+                                    class="w-3 h-3 ml-1"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication 3 -->
+                <div class="p-6 rounded-xl glass-card border-l-4 border-l-indigo-500 hover-glow transition-all">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span
+                                    class="px-2.5 py-0.5 rounded text-xs font-semibold bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">Published</span>
+                                <span class="text-sm font-mono text-gray-500 dark:text-gray-400">2024</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                Bangla Optical Character Recognition for Mobile Platforms: A Comprehensive
+                                Cross-Platform Approach
+                            </h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2 font-medium">
+                                Sharmin, S., Mim, T., & Rahman, M. — American Journal of Electrical and Computer
+                                Engineering
+                            </p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3 leading-relaxed">
+                                Developed a high-accuracy, cross-platform mobile OCR application to preserve and
+                                digitize complex Bangla script. Leveraged the Tesseract engine combined with
+                                custom-trained CNNs and ensemble learning (Random Forest, XGBoost) to achieve 99.98%
+                                recognition accuracy. This system facilitates real-time text extraction for license
+                                plate recognition and digital archiving of vintage literature.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded">Tesseract
+                                    Engine</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded">Ensemble
+                                    Learning</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded">Dart/Flutter</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded">Digital
+                                    Archiving</span>
+                            </div>
+                            <a href="https://www.researchgate.net/publication/384034840_Bangla_Optical_Character_Recognition_for_Mobile_Platforms_A_Comprehensive_Cross-Platform_Approach"
+                                target="_blank"
+                                class="inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline">
+                                DOI: 10.11648/j.ajece.20240802.12 <span data-lucide="external-link"
+                                    class="w-3 h-3 ml-1"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div
+            class="h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent my-10 animate-fade-in-up delay-300">
+        </div>
+
+        <!-- Technical Skills Section -->
+        <section id="technical-skills" class="py-16 animate-fade-in-up delay-[400ms]">
+            <div class="mb-10">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white flex items-center mb-2">
+                    <span data-lucide="wrench" class="w-8 h-8 mr-3 text-indigo-500"></span>
+                    Technical Capabilities
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl">
+                    A comprehensive toolkit spanning theoretical AI research and production-grade software engineering.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <!-- CORE COMPETENCIES -->
+                <div class="p-8 rounded-2xl glass-card border border-indigo-500/10 shadow-sm">
+                    <h3
+                        class="text-2xl font-bold border-b border-gray-200 dark:border-gray-700 pb-3 mb-8 text-indigo-600 dark:text-indigo-400 flex items-center">
+                        <span data-lucide="brain-circuit" class="w-7 h-7 mr-3"></span>
+                        CORE COMPETENCIES
+                    </h3>
+
+                    <div class="space-y-8">
+                        <div>
+                            <h4
+                                class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest mb-4 flex items-center">
+                                <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2"></span>
+                                LLM & Generative AI Systems
+                            </h4>
+                            <ul
+                                class="text-sm text-gray-600 dark:text-gray-400 space-y-2 ml-3.5 border-l border-gray-100 dark:border-gray-800 pl-4">
+                                <li><strong>Architectures:</strong> Retrieval-Augmented Generation (RAG), Semantic
+                                    Search.</li>
+                                <li><strong>Optimization:</strong> Prompt Engineering (Few-shot, Context Injection),
+                                    Response Optimization.</li>
+                                <li><strong>Conversational AI:</strong> Multi-turn Dialogue, Context Management.</li>
+                                <li><strong>Models:</strong> Deep integration with OpenAI, Gemini, and Groq APIs.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4
+                                class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest mb-4 flex items-center">
+                                <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2"></span>
+                                Model Training & Fine-Tuning
+                            </h4>
+                            <ul
+                                class="text-sm text-gray-600 dark:text-gray-400 space-y-2 ml-3.5 border-l border-gray-100 dark:border-gray-800 pl-4">
+                                <li><strong>Deep Learning:</strong> Transformer Fine-Tuning (BLIP), CNNs, Vision Models.
+                                </li>
+                                <li><strong>Frameworks:</strong> PyTorch, TensorFlow, Tokenization Pipelines.</li>
+                                <li><strong>Evaluation:</strong> BLEU scores, Threshold Tuning, Robust Generalization.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4
+                                class="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-widest mb-4 flex items-center">
+                                <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2"></span>
+                                Backend & Data Infrastructure
+                            </h4>
+                            <ul
+                                class="text-sm text-gray-600 dark:text-gray-400 space-y-2 ml-3.5 border-l border-gray-100 dark:border-gray-800 pl-4">
+                                <li><strong>Real-time systems:</strong> WebSockets, WebRTC for low-latency AI inference.
+                                </li>
+                                <li><strong>Retrieval Systems:</strong> Vector embeddings, Similarity Search, Ranking
+                                    Optimization.</li>
+                                <li><strong>Backends:</strong> FastAPI, Node.js (Express.js) production environments.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TECHNICAL TOOLBELT -->
+                <div class="p-8 rounded-2xl glass-card border border-emerald-500/10 shadow-sm">
+                    <h3
+                        class="text-2xl font-bold border-b border-gray-200 dark:border-gray-700 pb-3 mb-8 text-emerald-600 dark:text-emerald-400 flex items-center">
+                        <span data-lucide="wrench" class="w-7 h-7 mr-3"></span>
+                        TECHNICAL TOOLBELT
+                    </h3>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Languages -->
+                        <div>
+                            <h4
+                                class="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest mb-3">
+                                Languages</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Python</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">TypeScript</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">JavaScript</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Java</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">C++</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Swift</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Dart</span>
+                            </div>
+                        </div>
+
+                        <!-- Backend & Frameworks -->
+                        <div>
+                            <h4
+                                class="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest mb-3">
+                                Backend & Frameworks</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">FastAPI</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Node.js</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Express</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">REST APIs</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Prisma</span>
+                            </div>
+                        </div>
+
+                        <!-- Frontend -->
+                        <div>
+                            <h4
+                                class="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest mb-3">
+                                Frontend</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Next.js
+                                    16+</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">React
+                                    19</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">TailwindCSS
+                                    4</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Radix
+                                    UI</span>
+                            </div>
+                        </div>
+
+                        <!-- AI Models & LLM Stack -->
+                        <div>
+                            <h4
+                                class="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest mb-3">
+                                AI Models & SDKs</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Gemini
+                                    2.0</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">GPT-4o</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Llama
+                                    3.3</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">LangChain</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Pipecat
+                                    AI</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700 font-mono">Groq</span>
+                            </div>
+                        </div>
+
+                        <!-- Computer Vision & ML -->
+                        <div>
+                            <h4
+                                class="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest mb-3">
+                                Computer Vision & ML</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">PyTorch</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">YOLOv8</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">TensorFlow.js</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">face-api.js</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">HuggingFace</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">CNNs</span>
+                            </div>
+                        </div>
+
+                        <!-- Database -->
+                        <div>
+                            <h4
+                                class="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest mb-3">
+                                Database</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">MongoDB
+                                    Atlas</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">PostgreSQL</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Vector
+                                    Similarity</span>
+                            </div>
+                        </div>
+
+                        <!-- Infrastructure & Version Control -->
+                        <div>
+                            <h4
+                                class="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest mb-3">
+                                Infrastructure & Version Control</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Docker</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700 font-mono">WebRTC</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Git/GitHub</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">CI/CD</span>
+                            </div>
+                        </div>
+
+                        <!-- Cloud & Deployment -->
+                        <div>
+                            <h4
+                                class="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest mb-3">
+                                Cloud & Deployment</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Vercel</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Railway</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">HF
+                                    Spaces</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700">Google
+                                    Colab</span>
+                            </div>
+                        </div>
+
+                        <!-- AI-Assisted Engineering -->
+                        <div>
+                            <h4
+                                class="text-xs font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest mb-3">
+                                AI-Assisted Engineering</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700 font-mono">Cursor</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700 font-mono">Claude
+                                    Code</span>
+                                <span
+                                    class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded border border-gray-200 dark:border-gray-700 font-mono">Antigravity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 animate-fade-in-up delay-[500ms]">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white flex items-center mb-10">
+                <span data-lucide="briefcase" class="w-8 h-8 mr-3 text-indigo-500"></span>
+                Experience
+            </h2>
+            <div class="space-y-6">
+                <!-- AI/ML Engineer -->
+                <div class="p-6 md:p-8 rounded-2xl glass-card relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 left-0 w-1 h-full bg-indigo-500 rounded-l-2xl transition-all duration-300 group-hover:w-2">
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                        <h3
+                            class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            AI/ML Engineer</h3>
+                        <span
+                            class="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/40 px-3 py-1 rounded-full mt-2 md:mt-0">Sep
+                            2025 - Present</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 font-medium mb-4">InfoTechBrains CloudTech Private
+                        Limited | Remote</p>
+                    <ul class="list-disc ml-5 text-gray-700 dark:text-gray-300 space-y-2">
+                        <li>Architected and built responsive, high-performance web applications leveraging
+                            state-of-the-art AI/ML models.</li>
+                        <li>Spearheaded integration of Next.js front-ends with robust, scalable backends for seamless
+                            inference pipelines.</li>
+                        <li>Optimized codebases for low-latency production environments, emphasizing modern software
+                            engineering practices.</li>
+                    </ul>
+                </div>
+
+                <!-- Research Assistant -->
+                <div class="p-6 md:p-8 rounded-2xl glass-card relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 left-0 w-1 h-full bg-emerald-500 rounded-l-2xl transition-all duration-300 group-hover:w-2">
+                    </div>
+                    <div class="flex flex-col md:flex-row md:items-start justify-between mb-2">
+                        <h3
+                            class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            Research Assistant – Machine Learning & Computer Vision</h3>
+                        <span
+                            class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/40 px-3 py-1 rounded-full mt-2 md:mt-0 whitespace-nowrap">Jan
+                            2024 - Aug 2025</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 font-medium mb-4">Under Prof. Sabrina Sharmin (JU) & Md.
+                        Mahbubur Rahman (University of Wyoming)</p>
+                    <ul class="list-disc ml-5 text-gray-700 dark:text-gray-300 space-y-2">
+                        <li>Developed DL models achieving up to 99.8% accuracy across CV tasks and designed multi-model
+                            fusion architecture (FruitsMultiNet) outperforming baselines.</li>
+                        <li>Conducted benchmarking across CNN architectures (ResNet, VGG, MobileNet) and built
+                            mobile-integrated AI systems for real-world deployment.</li>
+                        <li>Published research in OCR and DL-based classification, performing dataset preprocessing,
+                            augmentation, and evaluation for robust generalization.</li>
+                    </ul>
+                </div>
+
+                <!-- Sr. Graphics Designer -->
+                <div class="p-6 md:p-8 rounded-2xl glass-card relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-gray-400 dark:bg-gray-600 rounded-l-2xl"></div>
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Sr. Graphics Designer</h3>
+                        <span
+                            class="text-xs font-bold text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full mt-2 md:mt-0">Feb
+                            2022 - Nov 2025</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 font-medium mb-4">GMS Composite Knitting Ind. Ltd.</p>
+                    <ul class="list-disc ml-5 text-gray-700 dark:text-gray-300 space-y-2">
+                        <li>Led graphic design creation, production planning, and execution for digital textile prints.
+                        </li>
+                        <li>Coordinated complex design deployments with buyers and manufacturing teams.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-16 animate-fade-in-up delay-[600ms]">
+            <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white flex items-center mb-10">
+                <span data-lucide="graduation-cap" class="w-8 h-8 mr-3 text-indigo-500"></span>
+                Education
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Education 1 -->
+                <div class="p-6 rounded-2xl glass-card">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">M.Sc. in Computer Science</h3>
+                    <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-2">Jahangirnagar University</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Savar, Bangladesh</p>
+                </div>
+                <!-- Education 2 -->
+                <div class="p-6 rounded-2xl glass-card">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">B.Sc. in Computer Science and
+                        Engineering</h3>
+                    <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-2">Dhaka International University</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Dhaka, Bangladesh</p>
+                </div>
+                <!-- Education 3 -->
+                <div class="p-6 rounded-2xl glass-card">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">PGD in Garment Business</h3>
+                    <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-2">IBA, University of Dhaka</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Dhaka, Bangladesh</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Me Section -->
+        <section id="contact" class="py-10 mb-20">
+            <h2 class="text-3xl font-bold border-b-2 border-indigo-500 dark:border-indigo-400 pb-2 mb-8">Contact Me</h2>
+            <div
+                class="p-8 rounded-xl bg-white dark:bg-gray-800 shadow-xl border border-gray-200 dark:border-gray-700 max-w-lg mx-auto">
+                <p class="text-center text-lg mb-6 text-gray-700 dark:text-gray-300">
+
+                </p>
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+
+
+
+                    <a href="https://scholar.google.com/citations?user=zrymUesAAAAJ&hl=en" target="_blank"
+                        aria-label="Google Scholar Profile"
+                        class="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-600 hover:text-indigo-700 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                        <span data-lucide="graduation-cap" class="w-5 h-5"></span>
+                        <span class="font-medium hidden sm:inline">Scholar</span>
+                    </a>
+
+
+
+                    <a href="https://www.researchgate.net/profile/Tasauf-Mim" target="_blank"
+                        aria-label="ResearchGate Profile"
+                        class="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-600 hover:text-indigo-700 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                        <span data-lucide="flask-conical" class="w-5 h-5"></span>
+                        <span class="font-medium hidden sm:inline">ResearchGate</span>
+                    </a>
+
+
+
+                    <a href="https://linkedin.com/in/tasaufmim" target="_blank" aria-label="LinkedIn Profile"
+                        class="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-600 hover:text-indigo-700 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                        <span data-lucide="linkedin" class="w-5 h-5"></span>
+                        <span class="font-medium hidden sm:inline">LinkedIn</span>
+                    </a>
+
+
+
+                    <a href="https://github.com/tasaufmim" target="_blank" aria-label="GitHub Profile"
+                        class="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-600 hover:text-indigo-700 dark:hover:text-white transition-all duration-200 shadow-sm hover:shadow-md">
+                        <span data-lucide="github" class="w-5 h-5"></span>
+                        <span class="font-medium hidden sm:inline">GitHub</span>
+                    </a>
+                </div>
+                <div class="space-y-4 text-center">
+                    <p class="flex items-center justify-center text-xl text-gray-900 dark:text-white">
+                        <span data-lucide="mail" class="w-6 h-6 mr-3 text-indigo-500"></span>
+                        <a href="mailto:tasaufmim@gmail.com"
+                            class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200 font-medium">tasaufmim@gmail.com</a>
+                    </p>
+                    <p class="flex items-center justify-center text-xl text-gray-900 dark:text-white">
+                        <span data-lucide="map-pin" class="w-6 h-6 mr-3 text-indigo-500"></span>
+                        Savar, Dhaka, Bangladesh
+                    </p>
+                    <p class="flex items-center justify-center text-xl text-gray-900 dark:text-white">
+                        <span data-lucide="phone" class="w-6 h-6 mr-3 text-indigo-500"></span>
+                        Phone: +880 1752 690 ***
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700 py-6">
+        <div class="container mx-auto px-4 text-center text-sm text-gray-600 dark:text-gray-400">
+            &copy; 2025 Tasauf Mim. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript for Theme Toggle -->
+    <script>
+        // Initialize Lucide Icons (to render the SVG icons)
+        lucide.createIcons();
+
+        const htmlEl = document.documentElement;
+        const toggleButton = document.getElementById('theme-toggle');
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                htmlEl.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlEl.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Function to determine the initial theme
+        function getInitialTheme() {
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme) {
+                return storedTheme;
+            }
+            // Check OS preference
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        // Apply initial theme on load
+        setTheme(getInitialTheme());
+
+        // Event listener for the toggle button
+        toggleButton.addEventListener('click', () => {
+            const currentTheme = htmlEl.classList.contains('dark') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+
+        // Optional: Listen for OS theme changes in real-time
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // Only update if the user hasn't explicitly set a preference via the toggle
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+
+        // --- AUTO-EXPAND ON SCROLL (INTERSECTION OBSERVER) ---
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Staggered delay for a premium feel
+                    setTimeout(() => {
+                        entry.target.setAttribute('open', '');
+                    }, index * 200);
+
+                    // Once it's open, we stop observing it
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.6, // Trigger when 60% of the element is visible
+            rootMargin: '0px 0px -15% 0px' // Requires it to be well inside the viewport
+        });
+
+        // Target all details elements directly
+        document.querySelectorAll('details').forEach(details => {
+            scrollObserver.observe(details);
+        });
+
+    </script>
+</body>
+
+</html
